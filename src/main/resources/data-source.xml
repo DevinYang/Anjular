@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+		
+	<!-- <beans:bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<beans:property name="url" value="jdbc:hsqldb:mem:hsqldb" />
+		<beans:property name="username" value="sa" />
+		<beans:property name="password" value="" />
+		<beans:property name="initialSize" value="5" />
+		<beans:property name="maxActive" value="10" />
+		<beans:property name="poolPreparedStatements" value="true" />
+		<beans:property name="maxOpenPreparedStatements" value="10" />
+	</beans:bean>  -->    
+	
+<!-- 	<jdbc:initialize-database data-source="dataSource2">
+		<jdbc:script location="classpath:db/schema-data.sql"/>
+		<jdbc:script location="classpath:db/init-data.sql"/>
+	</jdbc:initialize-database>  -->
+	
+	<jdbc:embedded-database id="dataSource" type="HSQL">
+		<jdbc:script location="classpath:db/schema-data.sql"/>
+		<jdbc:script location="classpath:db/init-data.sql"/>
+	</jdbc:embedded-database>
+	
+</beans:beans>

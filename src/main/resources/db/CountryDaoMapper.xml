@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.angular.portal.dao.CountryDao">
+	<sql id="fullColumns">
+		CTRY_CD,
+		CTRY_NM,
+		DTL_IND
+	</sql>
+	
+	<resultMap type="Country" id="CountryMap">
+		<result property="countryCode" column="CTRY_CD" />
+		<result property="countryName" column="CTRY_NM" />
+		<result property="recordStatus" column="DTL_IND" />
+	</resultMap>
+
+	<select id="getAllCountries" resultMap="CountryMap">
+		SELECT
+		<include refid="fullColumns" />
+		FROM CTRY
+	</select>
+	
+</mapper>
