@@ -7,7 +7,7 @@ package com.hp.angular.portal.model;
 public class Country {
 	private String countryCode;
 	private String countryName;
-	private String recordStatus;
+	private boolean recordStatus;
 
 	public String getCountryCode() {
 		return countryCode;
@@ -25,11 +25,11 @@ public class Country {
 		this.countryName = countryName;
 	}
 
-	public String getRecordStatus() {
+	public boolean getRecordStatus() {
 		return recordStatus;
 	}
 
-	public void setRecordStatus(String recordStatus) {
+	public void setRecordStatus(boolean recordStatus) {
 		this.recordStatus = recordStatus;
 	}
 }

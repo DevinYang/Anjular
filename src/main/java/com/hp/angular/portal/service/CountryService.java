@@ -6,7 +6,9 @@ import com.hp.angular.portal.model.Country;
 
 public interface CountryService {
 	public List<Country> getAllCountries();
+	public Country getCountryByCode(String countryCode);
 	public void createCountry(Country country);
 	public void updateCountry(Country country);
 	public void inactivateCountry(Country country);
+	public void reactivateCountry(Country country);
 }

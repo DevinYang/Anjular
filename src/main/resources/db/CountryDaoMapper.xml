@@ -20,4 +20,26 @@
 		FROM CTRY
 	</select>
 	
+	<select id="getCountryByCode" parameterType="String" resultMap="CountryMap">
+		SELECT
+		<include refid="fullColumns" />
+		FROM CTRY T
+		WHERE T.CTRY_CD = #{countryCode}
+	</select>
+	
+	<insert id="createCountry" parameterType="Country">
+		INSERT INTO CTRY(CTRY_CD, CTRY_NM, DTL_IND) VALUES(#{countryCode},#{countryName},false);
+	</insert>
+	
+	<update id="updateCountry" parameterType="Country">
+		UPDATE CTRY SET CTRY_NM = #{countryName}, DTL_IND = #{recordStatus} WHERE CTRY_CD = #{countryCode}
+	</update>
+	
+	<update id="inactivateCountry" parameterType="Country">
+		UPDATE CTRY SET DTL_IND = true WHERE CTRY_CD = #{countryCode}
+	</update>
+	
+	<update id="reactivateCountry" parameterType="Country">
+		UPDATE CTRY SET CTRY_NM = #{countryName}, DTL_IND = false WHERE CTRY_CD = #{countryCode}
+	</update>
 </mapper>

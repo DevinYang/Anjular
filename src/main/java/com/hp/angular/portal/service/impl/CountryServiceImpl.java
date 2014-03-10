@@ -36,4 +36,12 @@ public class CountryServiceImpl implements CountryService {
 		countryDao.inactivateCountry(country);
 	}
 
+	public Country getCountryByCode(String countryCode) {
+		return countryDao.getCountryByCode(countryCode);
+	}
+
+	public void reactivateCountry(Country country) {
+		
+	}
+
 }

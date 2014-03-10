@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="angularApp">
+<head>
+  <meta charset="utf-8">
+   <link rel="stylesheet" href="resources/js/libs/bootstrap/css/bootstrap.min.css"/>
+  <title>My AngularJS App</title>
+</head>
+<body>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+  -->
+  <script src="resources/js/libs/jquery/jquery-1.10.2.min.js"></script>
+  <script src="resources/js/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="resources/js/libs/angular/angular.js"></script>
+<!--   <script src="resources/js/libs/angular/angular.min.js"></script> -->
+  <script src="resources/js/libs/angular/angular-route.js"></script>
+<!--   <script src="resources/js/libs/angular/angular-route.min.js"></script> -->
+  <script src="resources/js/libs/angular/angular-resource.js"></script>
+<!--   <script src="resources/js/libs/angular/angular-resource.min.js"></script> -->
+  <script src="resources/js/app/app.js"></script>
+  <script src="resources/js/app/services/CommonServices.js"></script>
+  <script src="resources/js/app/controllers/CountryController.js"></script>
+  <div class="container" ng-controller='CountryCtrl'>
+  	<table class="table table-hover">
+  		<thead>
+			<tr>
+				<th>Country Code</th>
+				<th>Country Name</th>
+				<th>Recourd Status</th>
+			</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="country in countries">
+  				<td ng-hide="true">$index</td>
+  				<td>{{country.countryCode}}</td>
+  				<td>{{country.countryName}}</td>
+  				<td>{{country.recordStatus === false ? 'Active' : 'Inactive'}}</td>
+  			</tr>
+  		</tbody>
+  	</table>
+  	<div class="form-inline" >
+  		<div class="form-group">
+  			<label class="sr-only" for="countryCode">Country Code</label>
+	  		<input id="countryCode" type="text" ng-model="ctry.countryCode" class="form-control col-sm-4" placeholder="Country Code">
+  		</div>
+  		<div class="form-group">
+  			<label class="sr-only" for="countryName">Country Name</label>
+	  		<input id="countryName" type="text" ng-model="ctry.countryName" class="form-control col-sm-offset-4" placeholder="Country Name">
+  		</div>
+  		
+  		<div class="form-group">
+  			<button type="button" class="btn btn-primary col-sm-offset-12" ng-click="createCountry(ctry)">Create</button>
+  		</div>
+  	</div>
+  </div>
+</body>
+</html>
