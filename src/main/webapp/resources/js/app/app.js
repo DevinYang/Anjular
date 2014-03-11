@@ -1,3 +1,3 @@
 (function(angular,$){
-	angular.module("angularApp",['angularApp.countryController']);
-})(window.angular,window.jquery);
+	angular.module("angularApp",['globalConfig','countryController']);
+})(window.angular,window.jQuery);

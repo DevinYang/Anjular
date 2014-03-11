@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module("angularApp.services", ['ngResource']);
+	var app = angular.module("services", ['ngResource']);
 
 	app.factory("CommonActions", function() {
 		return {
@@ -29,6 +29,34 @@
 				'headers' : {
 	                'Content-Type' : 'application/json'
 	            }
+			}
+		};
+	});
+	
+	app.factory("CommonService",function(){
+		var services = {};
+		
+		services.formatRecordStatusTd = function (statusString) {
+			if(statusString === 'false') {
+				return 'Active'; 
+			}else if(statusString === 'true'){
+				return 'Inactive'; 
+			}else{
+				return statusString;
+			}
+		};
+		
+		return services;
+	});
+	
+	app.factory("MessageService",function(){
+		return {
+			message : null,
+			setMessage : function(msg){
+				this.message = msg;
+			},
+			clearMessage : function(){
+				this.message = null;
 			}
 		};
 	});

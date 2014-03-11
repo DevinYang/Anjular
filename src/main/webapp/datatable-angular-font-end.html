@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="dataTableApp">
+<head>
+  <meta charset="utf-8">
+   <link rel="stylesheet" href="resources/js/libs/bootstrap/css/bootstrap.min.css"/>
+   <link href="resources/js/plugins/jQueryDataTable/css/jquery.dataTables.css"
+	rel="stylesheet" type="text/css" />
+  <title>AngularJS Integrate with DataTable</title>
+</head>
+<body>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+  -->
+  <script src="resources/js/libs/jquery/jquery-1.10.2.min.js"></script>
+  <script src="resources/js/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="resources/js/libs/angular/angular.js"></script>
+  <script src="resources/js/libs/angular/angular-resource.js"></script>
+  <script src="resources/js/app/services/CommonServices.js"></script>
+  <script src="resources/js/app/controllers/DataTableController.js"></script>
+  <script src="resources/js/plugins/jQueryDataTable/jquery.dataTables.js"></script>
+  
+  <div class="container" ng-controller='DataTableCtrl'>
+  	<table id="datatable" class="table table-hover">
+  		<thead>
+			<tr>
+				<th>Country Code</th>
+				<th>Country Name</th>
+				<th>Recourd Status</th>
+			</tr>
+  		</thead>
+  	</table>
+  </div>
+</body>
+</html>

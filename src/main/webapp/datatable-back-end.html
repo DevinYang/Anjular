@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="http://datatables.net/download/build/nightly/jquery.dataTables.css"
+	rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://datatables.net/download/build/nightly/jquery.dataTables.js"></script>
+<style type="text/css">
+body {
+	font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	background-color: #fff;
+}
+
+
+div.container {
+	min-width: 980px;
+	margin: 0 auto;
+}
+</style>
+<script type="text/javascript">
+$(document).ready( function () {
+	var table = $(document).ready(function() {
+    $('#example').dataTable( {
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
+        "bSort": true,
+        "bInfo": true,
+        "sScrollY": "1000",
+        "bScrollCollapse": true,
+        "bSearchable": false,
+        "bAutoWidth": true,
+        "bProcessing": true, 
+        "sAjaxSource": "page.do",
+        "bServerSide":true,
+        "fnServerData" : function(sSource, aoData, fnCallback) {
+            $.ajax({
+             "dataType" : 'json',
+             "type" : "GET",
+             "url" : sSource,
+             "data" : aoData,
+             "success" : fnCallback
+            });
+         },
+        //"sPaginationType": "full_numbers",
+        "aoColumnDefs": [
+          { "bSearchable": false, "aTargets": [ 0 ] }
+        ] ,
+        "aoColumns" : [ 
+		               	{"mData" : "name","sWidth": "100px"},//2
+		                {"mData" : "position","sWidth": "100px"},//3
+		                {"mData" : "office","sWidth": "150px"},//4
+		                {"mData" : "age","sWidth": "150px"},//4
+		                {"mData" : "startDate","sWidth": "200px"},//5
+		                {"mData" : "salary","sWidth": "150px"}//7
+		],
+    } );
+} );
+} );
+</script>
+<meta charset=utf-8 />
+<title>DataTables - JS Bin</title>
+</head>
+<body>
+	<div class="container">
+		<table id="example" class="display" width="100%">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Position</th>
+					<th>Office</th>
+					<th>Age</th>
+					<th>Start date</th>
+					<th>Salary</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+</body>
+</html>

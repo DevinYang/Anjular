@@ -1,0 +1,7 @@
+.messageBar {
+	position: fixed;
+	z-index: 100000;
+	text-align: center;
+	margin-top : 20px;
+	width: 60%;
+}

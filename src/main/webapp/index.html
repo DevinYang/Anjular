@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
    <link rel="stylesheet" href="resources/js/libs/bootstrap/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="resources/css/style.css"/>
+   <link href="resources/js/plugins/jQueryDataTable/css/jquery.dataTables.css"
+	rel="stylesheet" type="text/css" />
   <title>My AngularJS App</title>
 </head>
 <body>
@@ -11,6 +14,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
   -->
   <script src="resources/js/libs/jquery/jquery-1.10.2.min.js"></script>
+  <script src="resources/js/plugins/jquery.blockUI.js"></script>
   <script src="resources/js/libs/bootstrap/bootstrap.min.js"></script>
   <script src="resources/js/libs/angular/angular.js"></script>
 <!--   <script src="resources/js/libs/angular/angular.min.js"></script> -->
@@ -21,8 +25,39 @@
   <script src="resources/js/app/app.js"></script>
   <script src="resources/js/app/services/CommonServices.js"></script>
   <script src="resources/js/app/controllers/CountryController.js"></script>
-  <div class="container" ng-controller='CountryCtrl'>
-  	<table class="table table-hover">
+  <script src="resources/js/app/controllers/GlobalConfig.js"></script>
+  <script src="resources/js/plugins/jQueryDataTable/jquery.dataTables.js"></script>
+  <script type="text/javascript">
+	//BlockUI for jquery	
+	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+	$(function() {
+		//demo test
+		$("#ajax").on("click", function() {
+			$.blockUI({
+				css : {
+					border : 'none',
+					padding : '15px',
+					backgroundColor : '#000',
+					'-webkit-border-radius' : '10px',
+					'-moz-border-radius' : '10px',
+					opacity : .5,
+					color : '#fff'
+				},
+				message : '<h4>Please wait...</h4>'
+			});
+
+			setTimeout($.unblockUI, 2000);
+		});
+	});
+</script>
+  <div class="container" style="width:60%" ng-controller='CountryCtrl'>
+	<div ng-controller="MessageCtrl">
+		<div class="messageBar alert alert-{{level}} alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>Oh snap! Change a few things up and try submitting again.</strong>
+		</div>
+	</div>
+  	<table id="datatable" class="table table-hover">
   		<thead>
 			<tr>
 				<th>Country Code</th>
@@ -32,7 +67,6 @@
   		</thead>
   		<tbody>
   			<tr ng-repeat="country in countries">
-  				<td ng-hide="true">$index</td>
   				<td>{{country.countryCode}}</td>
   				<td>{{country.countryName}}</td>
   				<td>{{country.recordStatus === false ? 'Active' : 'Inactive'}}</td>
@@ -53,6 +87,8 @@
   			<button type="button" class="btn btn-primary col-sm-offset-12" ng-click="createCountry(ctry)">Create</button>
   		</div>
   	</div>
+
+	  <button id="ajax" class="btn btn-default">BlockUI Test</button>
   </div>
 </body>
 </html>
