@@ -4,6 +4,8 @@
   <meta charset="utf-8">
    <link rel="stylesheet" href="resources/js/libs/bootstrap/css/bootstrap.min.css"/>
    <link rel="stylesheet" href="resources/css/style.css"/>
+   <link rel="stylesheet" href="resources/css/animation.css"/>
+   <link rel="stylesheet" href="resources/css/bootstrap-glyphicons.css"/>
    <link href="resources/js/plugins/jQueryDataTable/css/jquery.dataTables.css"
 	rel="stylesheet" type="text/css" />
   <title>My AngularJS App</title>
@@ -21,6 +23,7 @@
   <script src="resources/js/libs/angular/angular-route.js"></script>
 <!--   <script src="resources/js/libs/angular/angular-route.min.js"></script> -->
   <script src="resources/js/libs/angular/angular-resource.js"></script>
+  <script src="resources/js/libs/angular/angular-animate.js"></script>
 <!--   <script src="resources/js/libs/angular/angular-resource.min.js"></script> -->
   <script src="resources/js/app/app.js"></script>
   <script src="resources/js/app/services/CommonServices.js"></script>
@@ -51,10 +54,11 @@
 	});
 </script>
   <div class="container" style="width:60%" ng-controller='CountryCtrl'>
-	<div ng-controller="MessageCtrl">
-		<div class="messageBar alert alert-{{level}} alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<strong>Oh snap! Change a few things up and try submitting again.</strong>
+	<div  ng-controller="MessageCtrl">
+		<div ng-show="show" class="messageBar alert alert-{{level}} alert-dismissable animate-show">
+			<!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+			<button type="button" class="close" ng-click="hide()" aria-hidden="true">&times;</button>
+			<strong>{{message}}</strong>
 		</div>
 	</div>
   	<table id="datatable" class="table table-hover">
@@ -89,6 +93,7 @@
   	</div>
 
 	  <button id="ajax" class="btn btn-default">BlockUI Test</button>
+	  <button class="btn btn-default" ng-click="change(ctry.countryCode)">Toggle</button>
   </div>
 </body>
 </html>

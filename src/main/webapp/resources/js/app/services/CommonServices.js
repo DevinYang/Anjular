@@ -50,13 +50,24 @@
 	});
 	
 	app.factory("MessageService",function(){
+		var levels = ['success','info','warning','danger'];
 		return {
-			message : null,
+			message : "OK",
+			level : levels[0],
 			setMessage : function(msg){
 				this.message = msg;
 			},
-			clearMessage : function(){
-				this.message = null;
+			getMessage : function(){
+				return this.message;
+			},
+			setLevel : function(level){
+				this.level = level;
+			},
+			getLevel : function(){
+				return this.level;
+			},
+			hide : function(){
+				return true;
 			}
 		};
 	});

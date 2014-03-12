@@ -5,7 +5,7 @@
 		return $resource('country/countries.do');
 	}]);
 	
-	app.controller("CountryCtrl",['$scope','$q','$route','Country','Resource',function($scope,$q,$route,Country,Resource){
+	app.controller("CountryCtrl",['$scope','$q','$route','Country','Resource','MessageService',function($scope,$q,$route,Country,Resource,MessageService){
 		
 		$scope.ctry = {};
 		
@@ -19,7 +19,7 @@
 		
 		$scope.createCountry = function(country){
 			console.info(country);
-			Country.save({"countryCode" : null},angular.copy(country),function(response){
+			Country.save(null,angular.copy(country),function(response){
 				$scope.countries[$scope.countries.length] = response.content;
 				$scope.ctry = {};
 				return true;
@@ -43,6 +43,12 @@
 		      });
 		    }, 1000);
 		    return deferred.promise;
+		};
+		
+		$scope.change = function(message){
+//			console.log(MessageService.getMessage());
+			MessageService.setMessage(message);
+//			console.log(MessageService.getMessage());
 		};
 	}]);
 	
