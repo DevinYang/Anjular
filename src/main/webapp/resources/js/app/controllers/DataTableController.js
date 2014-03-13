@@ -1,5 +1,5 @@
 (function(angular,$){
-	var app = angular.module("dataTableApp",['angularApp.services']);
+	var app = angular.module("dataTableApp",['services']);
 	
 	app.controller("DataTableCtrl",['$scope','Country','CommonService',function($scope,Country,CommonService){
 		
