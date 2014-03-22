@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import com.hp.angular.portal.service.CountryService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:application-context.xml","classpath:profile.xml"})
+@ContextConfiguration(locations={"classpath:application-context.xml"/*,"classpath:profile.xml"*/})
 @ActiveProfiles("test")
 public class CountryServiceTest {
 	
