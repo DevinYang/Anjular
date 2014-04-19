@@ -3,6 +3,7 @@ package com.hp.angular.portal.controller;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import org.springframework.util.ClassUtils;
 import org.springframework.util.ResourceUtils;
 
 /**
@@ -13,7 +14,7 @@ import org.springframework.util.ResourceUtils;
  *
  */
 public class ClassPathUtils {
-	private static URL url = Integer.class.getResource("/");
+	private static URL url = ClassUtils.class.getResource("/");
 	
 	public static String getClassPath(){
 		try {
@@ -30,7 +31,4 @@ public class ClassPathUtils {
 		return path.substring(0,path.lastIndexOf("/")+1);
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(getRootPathForApplication());
-	}
 }
