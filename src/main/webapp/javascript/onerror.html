@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <script src="../resources/js/libs/jquery/jquery-1.9.1.js"></script>
+  <script src="../resources/js/plugins/jQueryUi/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../resources/js/plugins/jQueryUi/themes/smoothness/jquery-ui.css">
+  <style type="text/css">
+	#accordion-resizer {
+	    padding: 10px;
+	    width: 700px;
+	    height: 440px;
+	    margin: auto !important ;
+  	};
+  </style>
+  <script type="text/javascript">
+  	window.onerror = function(msg,eUrl,lineNum){
+  		console.log("message : " + msg);
+  		console.log("url : " + eUrl);
+  		console.log("line : " + lineNum);
+  	}
+  	
+  	function handleError(){
+  		console.log("onload...")
+  		//document.write(text);
+  	}
+  	$(function() {
+	 	  $( "#accordion" ).accordion({
+		 	    collapsible: true,
+		 	  	heightStyle: "fill"//content | fill
+	 	  });
+  	});
+  </script>
+</head>
+<body onload="handleError()" style="font-size: 88.5%;">
+<div id="accordion-resizer" class="ui-widget-content">
+	<div id="accordion">
+	  <h3>Window.onerror属性</h3>
+	  <div>
+			对于捕获JS里面的异常，我们可以使用try/catch或者使用window.onerror的属性。如果这个属性被赋予一个函数，<br>
+			那么只要这个窗口发生了javascript错误，该函数就会被调用，即它成了窗口的错误处理函数。<br>
+			传递给错误处理的程序的参数有三个：<br>
+			第一个是错误的消息；<br>
+			第二个是一个字符串，存放引发错误的javascript代码所在文档的URL；<br>
+			第三个是文档中发生错误得到行代码。
+	  </div>
+	  <h3>Navigator Object</h3>
+	  <div>
+	    <pre id="navigatorObject">
+	   		<script type="text/javascript">
+	   			var browser = "Browser Information:\n";
+	   			for(var propName in navigator){
+	   				browser += propName + ": " + navigator[propName] + "\n";
+	   			}
+	   			$("#navigatorObject").html(browser);
+	   		</script>
+	    </pre>
+	  </div>
+	  <h3>Section 3</h3>
+	  <div>
+	    <p>
+	    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+	    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+	    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+	    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+	    </p>
+	    <ul>
+	      <li>List item one</li>
+	      <li>List item two</li>
+	      <li>List item three</li>
+	    </ul>
+	  </div>
+	  <h3>Section 4</h3>
+	  <div>
+	    <p>
+	    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+	    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+	    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+	    mauris vel est.
+	    </p>
+	    <p>
+	    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+	    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+	    inceptos himenaeos.
+	    </p>
+	  </div>
+	</div>
+</div>
+</body>
+</html>
