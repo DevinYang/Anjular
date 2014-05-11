@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hp.angular.portal.dao.CountryDao">
+
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache" readOnly="true"/> -->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache" readOnly="true"/>
+	
 	<sql id="fullColumns">
 		CTRY_CD,
 		CTRY_NM,
@@ -27,7 +31,7 @@
 		WHERE T.CTRY_CD = #{countryCode}
 	</select>
 	
-	<insert id="createCountry" parameterType="Country">
+	<insert id="createCountry" parameterType="Country" flushCache="true">
 		INSERT INTO CTRY(CTRY_CD, CTRY_NM, DTL_IND) VALUES(#{countryCode},#{countryName},false);
 	</insert>
 	

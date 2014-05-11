@@ -19,7 +19,8 @@
 		
 		$scope.createCountry = function(country){
 			console.info(country);
-			Country.save(null,angular.copy(country),function(response){
+			Country.save({"countryCode" : null},angular.copy(country),function(response){
+/*				Country.save(null,angular.copy(country),function(response){*/
 				$scope.countries[$scope.countries.length] = response.content;
 				$scope.ctry = {};
 				return true;
